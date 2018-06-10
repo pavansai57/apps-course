@@ -64,34 +64,7 @@ print(fib(5))
 print("time: "+str(fib.t))
 print("count: "+str(fib.count))
 
-"""
-print(fib(2))
-print(fib.t)
-print(fib.count)
 
-print("")
-
-print(fib(3))
-print(fib.t)
-print(fib.count)
-
-print("")
-
-print(fib(4))
-print(fib.t)
-print(fib.count)
-
-print("")
-
-print(fib(5))
-print(fib.t)
-print(fib.count)
-
-
-
-
-
-"""
 
 
 @time_count(skip_recursion=True)
