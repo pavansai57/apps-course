@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<!--
+ This lesson deals with styling lists as menus.
+
+ Look up documentation and articles on the web to finish this
+ exercise.
+-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- useful in development mode for incremental testing -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>Understanding list styles</title>
+    <style type="text/css">
+
+        * {
+            border: solid thin sandybrown;
+            text-decoration: none;
+        }
+
+        #list6 {
+            width: 500px;
+            list-style-type: none;
+            background-color: coral;
+            text-decoration: none;
+        }
+
+        /*
+        set up the properties for the following so that the menus look as shown
+        in the image. You know most of the properties that you need. The new
+        ones that you need to look up are display and text-decoration.
+        */
+        #list6 li {
+            /* use the display property to lay out the items in horizontal manner */
+            display:inline-block;
+            text-decoration: none;
+            size:200px;
+            border-right:solid brown;
+            border-top-style:0px;
+            border-bottom-style:0px;
+            border-left-style:0px;
+        }
+
+        #list6 li:last-child {
+        border-right:none;
+        }
+
+        #list6 li:hover {
+        background-color:chocolate;
+        }
+
+        #list6 a {
+        text-decoration-line: none;
+        }
+
+        .active {
+        background-color: saddlebrown;
+        }
+
+        #list7 {
+        width:fit-content;
+        list-style:none;
+        padding-left:5px;
+        background-color: sandybrown;
+        border: solid brown;
+        }
+
+        #list7 li {
+
+
+        }
+
+        #list7 a {
+        text-decoration-line: none;
+        }
+
+        #list7 li:hover {
+         background-color:chocolate;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>This is how a horizontal menu will work </h3>
+    <ol id="list6">
+        <li> <a href="">Chapter 1</a></li>
+        <li class="active"><a href="">Chapter 2</a></li>
+        <li> <a href="">Chapter 3</a></li>
+    </ol>
+
+    <h3>Sample vertical navigation menu</h3>
+    <ol id="list7">
+        <li><a href="">Chapter 1</a></li>
+        <li class="active"><a href="">Chapter 2</a></li>
+        <li> <a href="">Chapter 3</a></li>
+    </ol>
+
+
+</body>
+</html>

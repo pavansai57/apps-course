@@ -1,0 +1,10 @@
+p{
+        color: green; /* sets the color of the text */
+        font-family: Helvetica ; /* use Helvetica font */
+        font-size: 16; /* use large size fonts */
+}
+    ol{
+    list-style:none;
+    color: orange;
+    text-align:center;
+    }

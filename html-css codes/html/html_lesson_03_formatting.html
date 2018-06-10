@@ -1,0 +1,56 @@
+
+<html>
+
+ <!--This lesson deals with formatting a given piece of text. We just focus on the common non-deprecated elements described
+ at http://www.sitepoint.com/web-foundations/text-formatting-elements-->
+
+ <body>
+ <div id="top">
+HTML Lesson on Formatting
+ </div>
+
+ <h1>Various kinds of formatting</h1>
+ <h1> Emphasis in HTML </h1>
+
+ <ol>
+     <li><i>This statement is in emphasis which is rendered in italics</i> </li>
+     <li><strong>This statement is in strong emphasis which is rendered in bold</strong> </li>
+ </ol>
+ <h1>Sub and super scripts</h1>
+
+ Chemical formula of sand is SiO<sub>2</sub>.
+<br>
+
+In a right triangle. a<sup>2</sup> + b <sup> 2</sup> = c <sup>2</sup>
+
+<h1>Code in HTML</h1>
+You can use some tags to retain indentation and mark out code in a special
+font.
+
+<h1>Inline code</h1>
+<span>
+    The python<code> range </code> function comes handy in generating test lists.
+</span>
+
+<h1>Block of code</h1>
+ </body>
+</html>
+<pre>
+    <code>
+def get_odds(count):
+    if count < 0:
+        raise ValueError("count must be >= 0")
+    return range(1, 2*count, 2)
+    </code>
+</pre>
+<h1>Links in a document</h1>
+
+You can link to an arbitrary page or section of a page using the anchor tags.
+
+<ul>
+    <li><a href="https://www.google.com">google</a></li>
+    <li><a href="#top">Top of this page</a></li>
+    <li><a href="https://docs.python.org/2/library/functions.html#slice">Python slice documentation</a></li>
+</ul>
+ </body>
+</html>
