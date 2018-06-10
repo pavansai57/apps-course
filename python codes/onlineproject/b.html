@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>hello</h1>
+<h2>hi</h2>
+<table>
+{% for i in college%}
+<tr>
+    <td>
+        {{i.name}}
+    </td>
+    <td>
+        {{i.acronnym}}
+    </td>
+</tr>
+    {%endfor%}
+</table>
+</body>
+</html>

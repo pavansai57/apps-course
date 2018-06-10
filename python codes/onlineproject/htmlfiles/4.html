@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function show(id)
+        {
+            alert(id);
+        }
+    </script>
+</head>
+<body>
+
+<center>
+    <h1>Students</h1>
+<table border="1px" style="border-collapse:collapse">
+{% for i in students%}
+<tr>
+    <td>
+        {{ i.id }}
+    </td>
+    <td>
+        {{ i.name }}
+    </td>
+    <td>
+        {{ i.email }}
+    </td>
+    <td>
+        {{ i.db_folder }}
+    </td>
+    <td>
+        {{ i.college__acronym }}
+    </td>
+    <td>
+        <button id={{ i.id }} onclick="show({{ i.mocktest1__total }})">show marks</button>
+    </td>
+</tr>
+    {%endfor%}
+</table>
+</center>
+
+</body>
+</html>

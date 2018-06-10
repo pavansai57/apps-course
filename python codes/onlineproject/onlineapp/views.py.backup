@@ -1,0 +1,118 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.http import HttpRequest
+from django.shortcuts import render
+from django.shortcuts import render_to_response
+
+
+
+import os
+import django
+
+import bs4 as bs
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "onlineproject.settings")
+django.setup()
+
+import onlineapp.models
+from onlineapp.models import *
+
+
+
+# Create your views here.
+def helloview(request):
+    helloworld= "<h1>helloworld</h1>"
+    #return helloworld
+    return HttpResponse(helloworld)
+
+
+def aview(request):  ##sending html without using template
+    str=""
+    with open("b.html","r")as f:
+        for s in f.readlines():
+            str=str+s
+    return HttpResponse(str)   ##you can send file handler also instead of sending string
+
+def college_name_acronym(request): ##loading data from database and converting it to string and then sending it
+    c=College.objects.all()
+    str="<html><body><table border='1px'>"
+    for x in c:
+        str=str+"<tr>"
+        str=str+"<td>"+x.name+"</td>"+"<td>"+x.acronym+"</td>"
+        str=str+"</tr>"
+    str=str+"</table>"
+    str=str+"</body></html"
+    return HttpResponse(str)
+
+def college(request):
+    c=College.objects.all()
+    display=HttpResponse.write(c)
+    return HttpResponse(display)
+
+def abrender(request):  ##the template path is defined in settings.py->template var->DIR[]
+    return render(request,"b.html")
+
+
+
+from django.template import loader
+
+def college_render_template(request):
+    a=College.objects.values("name","acronym")
+
+    template=loader.get_template("b.html")
+
+    #return HttpResponse(template.render({'college':a},request))
+    return render(request,"b.html",{'college':a})
+
+def student_details(request):
+    s=Student.objects.values("id","name","email","db_folder","college__acronym").order_by("id")
+    return render(request, "2.html", {'students': s})
+
+def student_get(request):
+    s_id=request.GET.get("id")
+    if s_id :
+        s=Student.objects.values("id","name","email","db_folder","college__acronym").get(id=s_id)
+        return render(request,"3.html",{'student':s})
+    else:
+        return render(request,"notfound.html")
+
+def student_get2(request,id):
+    s_id = id
+    if s_id:
+        try:
+            s = Student.objects.values("id", "name", "email", "db_folder", "college__acronym").get(id=s_id)
+            return render(request, "3.html", {'student': s})
+        except Exception as e:
+            return HttpResponse("<h1>Student not found</h1>")
+    else:
+        return render(request, "notfound.html")
+    ##^^if u use filter u can resue the before general template
+
+def student_marks(request):
+    s = Student.objects.values("id", "name", "email", "db_folder", "college__acronym","mocktest1__total").order_by("id")
+    return render(request, "4.html", {'students': s})
+
+def college_list(request,acronym):
+    try:
+        a=acronym
+        s=Student.objects.values("id","name","email","db_folder","mocktest1__total").filter(college__acronym=acronym).order_by("-mocktest1__total")
+        return render(request,"2.html",{'students':s})
+    except Exception as e:
+        print(e)
+        pass
+
+
+##debuggings down
+def session_view(request):  #/testsession should increase a seeesion varibale each time its hit.
+    request.session.setdefault('num',0)
+    request.session['num']=request.session['num']+1
+    return HttpResponse(""+str(request.session['num']))
+
+def raising_exception_in_view_code(request):
+    raise ValueError("my error")
+    pass
+
+def raising_exception_in_view_code2(request): ##to check 301 redicrct for addng /
+    raise ValueError("my error 2")
+    pass
+

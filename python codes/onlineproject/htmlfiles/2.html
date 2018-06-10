@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<center>
+    <h1>Students</h1>
+<table border="1px" style="border-collapse:collapse">
+     {% for i in students|slice:":1" %}
+    <tr>
+        {% for j in i %}
+        <td>
+            {{ j }}
+        </td>
+        {%endfor%}
+    </tr>
+    {%endfor%}
+{% for i in students%}
+<tr>
+    {% for j in i.values %}
+    <td>
+        {{ j }}
+    </td>
+    {%endfor%}
+</tr>
+    {%endfor%}
+</table>
+</center>
+
+</body>
+</html>
